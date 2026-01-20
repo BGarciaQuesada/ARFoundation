@@ -5,6 +5,7 @@ public class FaceDetector : MonoBehaviour
 {
     public ARFaceManager faceManager;
     public FaceRunnerController controller;
+    public FaceJumpController jumpController;
 
     void OnEnable()
     {
@@ -18,10 +19,10 @@ public class FaceDetector : MonoBehaviour
 
     void OnFacesChanged(ARFacesChangedEventArgs args)
     {
-        // ¿Mayor a cero? Ha detectado una cara
         if (args.added.Count > 0)
         {
             controller.face = args.added[0];
+            jumpController.face = args.added[0];
         }
     }
 }
