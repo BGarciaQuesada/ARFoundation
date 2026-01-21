@@ -4,10 +4,10 @@ using System.Collections.Generic;
 public class TrackSpawner : MonoBehaviour
 {
     public GameObject trackPrefab;
-    public GameObject obstaclePrefab;
+    public GameObject[] obstaclePrefab;
 
     public int initialPieces = 5;
-    public float pieceLength = 4f;
+    public float pieceLength = 5f;
     public float speed = 2f;
     public float obstacleChance = 0.5f;
 
@@ -39,24 +39,27 @@ public class TrackSpawner : MonoBehaviour
     void SpawnPiece()
     {
         GameObject piece = Instantiate(trackPrefab);
-        piece.transform.position = new Vector3(0, -1f, spawnZ);
+        piece.transform.position = new Vector3(0, -0.3f, spawnZ);
 
         // Posible obstáculo
         if (Random.value < obstacleChance)
         {
             SpawnObstacle(piece.transform);
         }
+        if (spawnZ < (initialPieces * pieceLength) - pieceLength){
+            spawnZ += pieceLength;
+        }
 
-        spawnZ += pieceLength;
+        Debug.Log("Pieza insertada");
         trackQueue.Enqueue(piece);
     }
 
     void SpawnObstacle(Transform parent)
     {
-        float[] lanes = { -0.5f, 0f, 0.5f };
+        float[] lanes = { -0.4f, 0f, 0.4f };
         float x = lanes[Random.Range(0, lanes.Length)];
 
-        GameObject obstacle = Instantiate(obstaclePrefab);
+        GameObject obstacle = Instantiate(obstaclePrefab[Random.Range(0, obstaclePrefab.Length)]);
         obstacle.transform.SetParent(parent);
         obstacle.transform.localPosition = new Vector3(x, 0.3f, 0);
     }

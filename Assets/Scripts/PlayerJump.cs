@@ -22,8 +22,8 @@ public class PlayerJump : MonoBehaviour
             Debug.Log("Colisión con: " + other.gameObject.name);
             vidas--;
             Debug.Log("Vidas restantes: " + vidas);
-            if(vidas <= 0)
-                Time.timeScale = 0;  // Pausa el juego
+        //    if(vidas <= 0)
+        //        Time.timeScale = 0;  // Pausa el juego
         }
     }
 }
