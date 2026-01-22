@@ -507,6 +507,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Player
       objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: daf12064713dd5b43b360af9dd277cc3, type: 3}
+      propertyPath: m_TagString
+      value: Player
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects:
@@ -548,6 +552,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::PlayerJump
   isGrounded: 1
   vidas: 3
+  smokeParticlesPrefab: {fileID: 104829970813648393, guid: d3015b7eea383f64d8b81f965cc466e7, type: 3}
 --- !u!54 &672928461
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -594,8 +599,8 @@ BoxCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Size: {x: 0.034680046, y: 0.10616677, z: 0.13409749}
-  m_Center: {x: 0.000105917454, y: -0.007478136, z: 0.025054283}
+  m_Size: {x: 0.034680046, y: 0.12139902, z: 0.13409749}
+  m_Center: {x: 0.000105917454, y: -0.015094269, z: 0.025054285}
 --- !u!1 &832575517
 GameObject:
   m_ObjectHideFlags: 0

@@ -14,6 +14,26 @@ public class TrackSpawner : MonoBehaviour
     private Queue<GameObject> trackQueue = new Queue<GameObject>();
     private float spawnZ = 0f;
 
+    public bool gameOver = false;
+
+    // Activo: escucha evento de muerte del jugador
+    void OnEnable()
+    {
+        GameEvents.OnPlayerDeath += OnGameOver;
+    }
+
+    // Desactivo: deja de escuchar evento de muerte del jugador
+    void OnDisable()
+    {
+        GameEvents.OnPlayerDeath -= OnGameOver;
+    }
+
+    // Poner boolean a true que se emplea en Update para dejar de mover las piezas
+    void OnGameOver()
+    {
+        gameOver = true;
+    }
+
     void Start()
     {
         for (int i = 0; i < initialPieces; i++)
@@ -24,6 +44,8 @@ public class TrackSpawner : MonoBehaviour
 
     void Update()
     {
+        if (gameOver) return;
+
         foreach (GameObject piece in trackQueue)
         {
             piece.transform.Translate(Vector3.back * speed * Time.deltaTime);
