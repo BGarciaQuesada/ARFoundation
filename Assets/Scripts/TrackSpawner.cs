@@ -11,6 +11,12 @@ public class TrackSpawner : MonoBehaviour
     public float speed = 2f;
     public float obstacleChance = 0.5f;
 
+    public float speedIncreaseInterval = 5f;
+    public float speedIncreaseAmount = 0.2f;
+
+    private float speedTimer = 0f;
+
+
     private Queue<GameObject> trackQueue = new Queue<GameObject>();
     private float spawnZ = 0f;
 
@@ -56,11 +62,46 @@ public class TrackSpawner : MonoBehaviour
             RemovePiece();
             SpawnPiece();
         }
+
+        // AUMENTO DE VELOCIDAD CADA X SEGUNDOS
+        speedTimer += Time.deltaTime;
+
+        if (speedTimer >= speedIncreaseInterval)
+        {
+            // Ha pasado el intervalo, aumentar la velocidad
+            speed += speedIncreaseAmount;
+            speedTimer = 0f; // Reiniciar el temporizador
+
+            Debug.Log("Velocidad aumentada a: " + speed);
+        }
     }
 
     void SpawnPiece()
     {
+        // Con el sistema anterior no funcionaba bien el que cada x tiempo, se aumentase la velocidad:
+        // SpawnZ continuamente aumentaba pero las piezas se quedaban atrás, por lo que había huecos.
+        // Ahora lo que hago es ver la última pieza, leer su Z y colocarla justo después.
+
         GameObject piece = Instantiate(trackPrefab);
+
+        spawnZ = 0f;
+
+        // ¿No hay pieza (aka. inicio)? Comenzar en 0 (luego evitar que aparezca un obstáculo en la primera pieza)
+        if (trackQueue.Count == 0)
+        {
+            spawnZ = 0f;
+        }
+        else
+        {
+            // Resetea la "última pieza" y la busca en el queue
+            GameObject lastPiece = null;
+            foreach (var p in trackQueue) // final de bucle -> ultima pieza
+                lastPiece = p;
+
+            // Coge la Z de la última pieza y le suma la longitud de pieza
+            spawnZ = lastPiece.transform.position.z + pieceLength;
+        }
+
         piece.transform.position = new Vector3(0, -0.3f, spawnZ);
 
         // Posible obstáculo
@@ -68,13 +109,10 @@ public class TrackSpawner : MonoBehaviour
         {
             SpawnObstacle(piece.transform);
         }
-        if (spawnZ < (initialPieces * pieceLength) - pieceLength){
-            spawnZ += pieceLength;
-        }
 
-        Debug.Log("Pieza insertada");
         trackQueue.Enqueue(piece);
     }
+
 
     void SpawnObstacle(Transform parent)
     {

@@ -8,8 +8,8 @@ public class FaceJumpController : MonoBehaviour
     public PlayerJump player;
 
     [Header("Jump Settings")]
-    public float jumpForce = 4f;
-    public float pitchThreshold = -15f;
+    public float jumpForce = 7f;
+    public float pitchThreshold = -5f;
     public float cooldown = 0.8f;
 
     private bool isGrounded = true;
