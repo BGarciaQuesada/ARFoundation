@@ -1646,6 +1646,25 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1358121600}
   m_CullTransparentMesh: 1
+--- !u!1 &1375737368 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 7339939290134825099, guid: 8dd976419b8f5be459cb45bf5995943b, type: 3}
+  m_PrefabInstance: {fileID: 3581851326657284348}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &1375737374
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1375737368}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a656527a35faa284382b671aac866a71, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::ScoreManager
+  scoreText: {fileID: 245871893}
+  score: 0
 --- !u!1 &1408896379
 GameObject:
   m_ObjectHideFlags: 0
@@ -1974,6 +1993,26 @@ PrefabInstance:
       propertyPath: playerRb
       value: 
       objectReference: {fileID: 672928461}
+    - target: {fileID: 2364480744690696801, guid: 8dd976419b8f5be459cb45bf5995943b, type: 3}
+      propertyPath: collectiblePrefabs.Array.size
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 2364480744690696801, guid: 8dd976419b8f5be459cb45bf5995943b, type: 3}
+      propertyPath: 'collectablePrefabs.Array.data[2]'
+      value: 
+      objectReference: {fileID: 6954758372675618198, guid: 6a301d09debaf1e4a8d3e2657cc44a96, type: 3}
+    - target: {fileID: 2364480744690696801, guid: 8dd976419b8f5be459cb45bf5995943b, type: 3}
+      propertyPath: 'collectiblePrefabs.Array.data[0]'
+      value: 
+      objectReference: {fileID: 7063743252289416628, guid: f9368726f996fae4a9cedf84c01a2ff0, type: 3}
+    - target: {fileID: 2364480744690696801, guid: 8dd976419b8f5be459cb45bf5995943b, type: 3}
+      propertyPath: 'collectiblePrefabs.Array.data[1]'
+      value: 
+      objectReference: {fileID: 6954758372675618198, guid: 6a301d09debaf1e4a8d3e2657cc44a96, type: 3}
+    - target: {fileID: 2364480744690696801, guid: 8dd976419b8f5be459cb45bf5995943b, type: 3}
+      propertyPath: 'collectiblePrefabs.Array.data[2]'
+      value: 
+      objectReference: {fileID: 2573013051975258517, guid: e1dcc1756599cdb45b9d838c33287a10, type: 3}
     - target: {fileID: 6202442714064019039, guid: 8dd976419b8f5be459cb45bf5995943b, type: 3}
       propertyPath: m_LocalPosition.x
       value: -0.1895
@@ -2025,7 +2064,10 @@ PrefabInstance:
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 7339939290134825099, guid: 8dd976419b8f5be459cb45bf5995943b, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1375737374}
   m_SourcePrefab: {fileID: 100100000, guid: 8dd976419b8f5be459cb45bf5995943b, type: 3}
 --- !u!1660057539 &9223372036854775807
 SceneRoots:

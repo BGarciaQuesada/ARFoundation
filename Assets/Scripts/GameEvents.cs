@@ -5,4 +5,5 @@ using System;
 public static class GameEvents
 {
     public static Action OnPlayerDeath;
+    public static Action<int> OnCollectiblePicked;
 }

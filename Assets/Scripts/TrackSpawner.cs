@@ -5,13 +5,13 @@ public class TrackSpawner : MonoBehaviour
 {
     public GameObject trackPrefab;
     public GameObject[] obstaclePrefabs;
-    public GameObject[] collectablePrefabs;
+    public GameObject[] collectiblePrefabs;
 
     public int initialPieces = 5;
     public float pieceLength = 5f;
     public float speed = 2f;
     public float obstacleChance = 0.5f;
-    public float collectableChance = 0.5f;
+    public float collectibleChance = 0.5f;
 
     public float speedIncreaseInterval = 5f;
     public float speedIncreaseAmount = 0.2f;
@@ -88,7 +88,7 @@ public class TrackSpawner : MonoBehaviour
 
         spawnZ = 0f;
 
-        // ¿No hay pieza (aka. inicio)? Comenzar en 0 (luego evitar que aparezca un obstáculo en la primera pieza)
+        // ¿No hay pieza (aka. inicio)? Comenzar en 0 (luego evitar que aparezcan cosas en la primera pieza)
         if (trackQueue.Count == 0)
         {
             spawnZ = 0f;
@@ -100,7 +100,7 @@ public class TrackSpawner : MonoBehaviour
             foreach (var p in trackQueue) // final de bucle -> ultima pieza
                 lastPiece = p;
 
-            // Coge la Z de la última pieza y le suma la longitud de pieza
+            // Coge la Z de la última y le suma la longitud de pieza
             spawnZ = lastPiece.transform.position.z + pieceLength;
         }
 
@@ -110,18 +110,19 @@ public class TrackSpawner : MonoBehaviour
         // Carriles (para comprobar si están ocupados o no)
         bool[] laneOccupied = new bool[3];
 
+        // [!] Las alturas aquí están hardcodeadas. Podrían ser variables públicas si se quiere ajustar más adelante
         // Posible obstáculo
         if (Random.value < obstacleChance)
-            SpawnObject(piece.transform, obstaclePrefabs, laneOccupied);
+            SpawnObject(piece.transform, obstaclePrefabs, laneOccupied, 0.3f);
         
         // Posible coleccionable
-        if (Random.value < collectableChance)
-            SpawnObject(piece.transform, collectablePrefabs, laneOccupied);
+        if (Random.value < collectibleChance)
+            SpawnObject(piece.transform, collectiblePrefabs, laneOccupied, 40f);
 
         trackQueue.Enqueue(piece);
     }
 
-    void SpawnObject(Transform parent, GameObject[] objectPrefab, bool[] laneOccupied)
+    void SpawnObject(Transform parent, GameObject[] objectPrefab, bool[] laneOccupied, float height)
     {
         // Lista de lanes disponibles (list porque no va a saber el tamaño hasta que llegue)
         List<int> freeLanes = new List<int>();
@@ -148,7 +149,7 @@ public class TrackSpawner : MonoBehaviour
         // Instanciar el objeto como antes...
         GameObject objectSpawned = Instantiate(objectPrefab[Random.Range(0, objectPrefab.Length)]);
         objectSpawned.transform.SetParent(parent);
-        objectSpawned.transform.localPosition = new Vector3(x, 0.3f, 0);
+        objectSpawned.transform.localPosition = new Vector3(x, height, 0);
 
         // Marcar lane como ocupado en la posición correspondiente
         laneOccupied[laneIndex] = true;

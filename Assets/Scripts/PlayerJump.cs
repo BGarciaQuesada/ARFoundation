@@ -25,10 +25,9 @@ public class PlayerJump : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        Debug.Log("Ontrigger");
+        Debug.Log("Colisión con: " + other.gameObject.name);
         if (other.gameObject.CompareTag("Obstacle"))
         {
-            Debug.Log("Colisión con: " + other.gameObject.name);
             vidas--;
             Debug.Log("Vidas restantes: " + vidas);
 
@@ -45,6 +44,13 @@ public class PlayerJump : MonoBehaviour
                 Muerte();
             }
                 
+        }
+        if (other.gameObject.CompareTag("Collectible"))
+        {
+            Debug.Log("¡Recogiste un coleccionable!");
+            // Sumar puntuación (nuevamente, hardcodeado, pero es fácil de escalar)
+            GameEvents.OnCollectiblePicked?.Invoke(10); // Así me evito que PlayerJump conozca el texto de UI
+            Destroy(other.gameObject);
         }
     }
 
