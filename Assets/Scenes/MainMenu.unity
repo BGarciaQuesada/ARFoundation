@@ -157,8 +157,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 0, y: 358.17407}
-  m_SizeDelta: {x: 0, y: -716.3482}
+  m_AnchoredPosition: {x: 0, y: 371.49}
+  m_SizeDelta: {x: 0, y: -742.98}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &16194867
 MonoBehaviour:
@@ -368,7 +368,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -0.00001049, y: 196}
+  m_AnchoredPosition: {x: -0.00001049, y: 184}
   m_SizeDelta: {x: 697.7606, y: 350.98}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &263354010
@@ -685,7 +685,7 @@ MonoBehaviour:
   m_AutoFocus: 1
   m_ImageStabilization: 0
   m_LightEstimation: 0
-  m_FacingDirection: 1
+  m_FacingDirection: 2
   m_RenderMode: 0
 --- !u!81 &316503479
 AudioListener:
@@ -882,7 +882,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0.5}
   m_AnchorMax: {x: 1, y: 0.5}
-  m_AnchoredPosition: {x: 0, y: -17}
+  m_AnchoredPosition: {x: 0, y: -14}
   m_SizeDelta: {x: -212.9494, y: 116.3349}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &453474838
@@ -928,7 +928,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 453474839}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 1881128376}
+        m_TargetAssemblyTypeName: MainMenuBehavior, Assembly-CSharp
+        m_MethodName: StartGame
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &453474839
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1107,7 +1119,7 @@ GameObject:
   - component: {fileID: 653457927}
   - component: {fileID: 653457926}
   m_Layer: 5
-  m_Name: BtInstrucciones
+  m_Name: BtTraining
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1130,7 +1142,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0.5}
   m_AnchorMax: {x: 1, y: 0.5}
-  m_AnchoredPosition: {x: 0, y: -163}
+  m_AnchoredPosition: {x: -0.000030517578, y: -149}
   m_SizeDelta: {x: -212.9494, y: 116.3349}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &653457926
@@ -1176,7 +1188,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 653457927}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 1881128376}
+        m_TargetAssemblyTypeName: MainMenuBehavior, Assembly-CSharp
+        m_MethodName: ManageTraining
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &653457927
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1542,8 +1566,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0}
   m_AnchorMax: {x: 0.5, y: 0}
-  m_AnchoredPosition: {x: 0, y: 217}
-  m_SizeDelta: {x: 600, y: 350}
+  m_AnchoredPosition: {x: 0.0000076294, y: 192}
+  m_SizeDelta: {x: 550, y: 300}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1193645212
 MonoBehaviour:
@@ -1619,8 +1643,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 0.000061035156, y: -268.51}
-  m_SizeDelta: {x: -0.00018311, y: -537.02}
+  m_AnchoredPosition: {x: 0.000061035156, y: -241.09833}
+  m_SizeDelta: {x: -0.0002, y: -482.1966}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1214938015
 MonoBehaviour:
@@ -2145,6 +2169,7 @@ GameObject:
   - component: {fileID: 1881128374}
   - component: {fileID: 1881128373}
   - component: {fileID: 1881128372}
+  - component: {fileID: 1881128376}
   m_Layer: 5
   m_Name: Canvas
   m_TagString: Untagged
@@ -2236,6 +2261,19 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0, y: 0}
+--- !u!114 &1881128376
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1881128371}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f0ec915370a028b478c7477088c06c25, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::MainMenuBehavior
+  hidablePanel: {fileID: 1214938013}
 --- !u!1 &1892799276
 GameObject:
   m_ObjectHideFlags: 0
