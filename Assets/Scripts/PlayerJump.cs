@@ -2,6 +2,14 @@ using UnityEngine;
 
 public class PlayerJump : MonoBehaviour
 {
+    [Header("SFX Entorno")]
+    [SerializeField] private AudioSource startSFX;
+    [SerializeField] private AudioSource movementSFX;
+    [SerializeField] private AudioSource hitSFX;
+    [SerializeField] private AudioSource deathSFX;
+    [SerializeField] private AudioSource collectSFX;
+
+    [Header("Estado del jugador")]
     public bool isGrounded = true;
     public int vidas = 3;
 
@@ -12,6 +20,16 @@ public class PlayerJump : MonoBehaviour
     {
         // Automáticamente obtener el Rigidbody
         rb = GetComponent<Rigidbody>();
+
+        // Sonido de inicio del juego
+        if (startSFX != null)
+            startSFX.Play();
+        // Sonido constante del carro
+        if (movementSFX != null)
+        {
+            movementSFX.loop = true;
+            movementSFX.Play();
+        }
     }
 
     void OnCollisionEnter(Collision collision)
@@ -28,6 +46,10 @@ public class PlayerJump : MonoBehaviour
         Debug.Log("Colisión con: " + other.gameObject.name);
         if (other.gameObject.CompareTag("Obstacle"))
         {
+            // Sonido de golpe
+            if (hitSFX != null)
+                hitSFX.Play();
+
             vidas--;
             Debug.Log("Vidas restantes: " + vidas);
 
@@ -47,6 +69,10 @@ public class PlayerJump : MonoBehaviour
         }
         if (other.gameObject.CompareTag("Collectible"))
         {
+            // Sonido de coleccionable
+            if (collectSFX != null)
+                collectSFX.Play();
+
             Debug.Log("¡Recogiste un coleccionable!");
             // Sumar puntuación (nuevamente, hardcodeado, pero es fácil de escalar)
             GameEvents.OnCollectiblePicked?.Invoke(10); // Así me evito que PlayerJump conozca el texto de UI
@@ -56,6 +82,12 @@ public class PlayerJump : MonoBehaviour
 
     void Muerte()
     {
+        // Parar el sonido de movimiento y reproducir el de muerte
+        if (movementSFX != null)
+            movementSFX.Stop();
+        if (deathSFX != null)
+            deathSFX.Play();
+
         // Quitar congelación de rotación
         rb.constraints = RigidbodyConstraints.None;
 

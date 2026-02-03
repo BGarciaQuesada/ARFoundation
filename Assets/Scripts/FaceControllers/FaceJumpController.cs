@@ -3,6 +3,9 @@ using UnityEngine.XR.ARFoundation;
 
 public class FaceJumpController : MonoBehaviour
 {
+    [Header("SFX Jugador")]
+    [SerializeField] private AudioSource jumpSFX;
+
     public ARFace face;
     public Rigidbody playerRb;
     public PlayerJump player;
@@ -31,6 +34,10 @@ public class FaceJumpController : MonoBehaviour
 
     void Jump()
     {
+        // Sonido de salto
+        if (jumpSFX != null)
+            jumpSFX.Play();
+
         // UIManager.Instance.MostrarMensaje("Jump");
         playerRb.linearVelocity = new Vector3(playerRb.linearVelocity.x, 0, playerRb.linearVelocity.z);
         playerRb.AddForce(Vector3.up * jumpForce, ForceMode.Impulse);
